@@ -2,3 +2,39 @@
 #include "get_number-lib.h"
 
 
+int run_get_number(char * number, char * key_filename, FILE * print_fh){
+  int return_val;
+  return return_val;
+}
+char * get_url(char * number){
+  char * return_val;
+  return return_val;
+}
+int string_is_not_digits(char * number){
+  int return_val;
+  return return_val;
+}
+char * get_key_from_file(char * filename){
+  char * return_val;
+  return return_val;
+}
+char * get_string_from_number_api(char * url, char * key){
+  char * return_val;
+  return return_val;
+}
+int init_string_holder(string_holder * string_holder_p, size_t num){
+  int return_val;
+  return return_val;
+}
+CURL * setup_curl(char * key, char * url, string_holder * string_holder_p){
+  CURL * return_val;
+  return return_val;
+}
+void cleanup (CURL * curl_h, char * url, char * key, char * returned_string){
+  return;
+}
+
+/*call back used in setting up curl */
+size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
+
+

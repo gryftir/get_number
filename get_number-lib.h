@@ -14,15 +14,7 @@
 /*preprocessor items*/
 
 /*Structures*/
-typedef struct string_node {
-  char string[512];
-  size_t length_in_bytes;
-}string_node;
 
-typedef struct string_holder {
-  string_node * root;
-  string_node * last;
-}string_holder;
 
 
 /*function declarations*/
@@ -31,12 +23,8 @@ char * get_url(char * number);
 int string_is_not_digits(char * number);
 char * get_key_from_file(char * filename);
 char * get_string_from_number_api(char * url, char * key);
-int init_string_holder(string_holder * string_holder_p);
-CURL * setup_curl(char * key, char * url, string_holder * string_holder_p);
+CURL * setup_curl(char * key, char * url, FILE * fh);
 void cleanup (CURL * curl_h, char * url, char * key);
-string_node * new_string_node(void);
-string_node * destroy_string_node(string_node * node);
-char * string_holder_to_string(string_holder * holder_p);
 
 
 /*call back used in setting up curl */

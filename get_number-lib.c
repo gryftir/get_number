@@ -3,7 +3,7 @@
 
 
 int run_get_number(char * number, char * key_filename, FILE * print_fh){
-  int return_val;
+  int return_val = 0;
   return return_val;
 }
 /** param number (a string)
@@ -59,14 +59,12 @@ char * get_key_from_file(char * filename){
 }
 
 char * get_string_from_number_api(char * url, char * key){
-  char * return_val;
+  char * return_val = NULL;
   return return_val;
 }
-int init_string_holder(string_holder * string_holder_p){
-  return 0;
-}
-CURL * setup_curl(char * key, char * url, string_holder * string_holder_p){
-  CURL * return_val;
+
+CURL * setup_curl(char * key, char * url, FILE * fh){
+  CURL * return_val = NULL;
   return return_val;
 }
 void cleanup (CURL * curl_h, char * url, char * key){
@@ -75,22 +73,7 @@ void cleanup (CURL * curl_h, char * url, char * key){
 
 /*call back used in setting up curl */
 size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
-  size_t return_val;
+  size_t return_val = 0;
   return return_val;
 }
-
-
-string_node * new_string_node(void){
-  string_node * return_val;
-  return return_val;
-}
-string_node * destroy_string_node(string_node * node){
-  string_node * return_val;
-  return return_val;
-}
-char * string_holder_to_string(string_holder * holder_p){
-  char * return_val;
-  return return_val;
-}
-
 

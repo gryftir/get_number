@@ -7,6 +7,7 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 #include <curl/curl.h>
+#include <ctype.h>
 
 /*further includes*/
 

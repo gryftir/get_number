@@ -7,8 +7,16 @@ int run_get_number(char * number, char * key_filename, FILE * print_fh){
   return return_val;
 }
 char * get_url(char * number){
-  char * return_val;
-  return return_val;
+  if (string_is_not_digits(number) ) {
+    return NULL;
+  }
+  char * url_front = "https://numbersapi.p.mashape.com/";
+  char * url_end = "/math";
+  char * string = calloc(strlen(number) + strlen(url_front) + strlen(url_end) + 1, sizeof (char));
+  strcpy(string, url_front);
+  strcat(string, number);
+  strcat(string, url_end);
+  return string;
 }
 /** param number (a string)
   returns 1 if string is all digits, 0 if not
@@ -19,7 +27,7 @@ int string_is_not_digits(char * number){
   char * walker = number;
   while (*walker) {
     if (!(isdigit(*walker)) )  
-        return 1;
+      return 1;
     walker++; 
   }
   return 0;

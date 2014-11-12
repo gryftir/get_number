@@ -18,7 +18,7 @@ void teardown_num(get_num_struct * loc, gconstpointer test_data) {
   return;
 }
 
-//test_init
+//tests
 
 void test_string_is_not_digits (get_num_struct * loc, gconstpointer ignored) {
   g_assert_cmpint(string_is_not_digits(NULL), ==, 1);
@@ -32,9 +32,17 @@ void test_string_is_not_digits (get_num_struct * loc, gconstpointer ignored) {
   return;
 }
 
+void test_get_url (get_num_struct * loc, gconstpointer ignored) {
+  char * string = get_url("12");
+  g_assert_cmpstr("https://numbersapi.p.mashape.com/12/math", ==, string);
+  free (string);
+  return;
+}
+
 int main(int argc, char *argv[])
 {
   g_test_init(&argc, &argv, NULL);
-  g_test_add("/set1/num test", get_num_struct, NULL, setup_num, test_string_is_not_digits, teardown_num);
+  g_test_add("/set1/string_is_not_digits", get_num_struct, NULL, setup_num, test_string_is_not_digits, teardown_num);
+  g_test_add("/set1/get_url", get_num_struct, NULL, setup_num, test_get_url, teardown_num);
   return g_test_run();
 }

@@ -62,9 +62,8 @@ char * get_string_from_number_api(char * url, char * key){
   char * return_val;
   return return_val;
 }
-int init_string_holder(string_holder * string_holder_p, size_t num){
-  int return_val;
-  return return_val;
+int init_string_holder(string_holder * string_holder_p){
+  return 0;
 }
 CURL * setup_curl(char * key, char * url, string_holder * string_holder_p){
   CURL * return_val;
@@ -75,6 +74,23 @@ void cleanup (CURL * curl_h, char * url, char * key){
 }
 
 /*call back used in setting up curl */
-size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
+size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
+  size_t return_val;
+  return return_val;
+}
+
+
+string_node * new_string_node(void){
+  string_node * return_val;
+  return return_val;
+}
+string_node * destroy_string_node(string_node * node){
+  string_node * return_val;
+  return return_val;
+}
+char * string_holder_to_string(string_holder * holder_p){
+  char * return_val;
+  return return_val;
+}
 
 

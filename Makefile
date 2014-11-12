@@ -1,6 +1,6 @@
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
-CFILES:=$(wildcard *.c)
+CFILES:=$(wildcard *-lib.c)
 P=get_number
 OBJECTS=$(patsubst %.c, %.o, $(CFILES))
 CFLAGS=`pkg-config --cflags glib-2.0` -g -Wall -std=gnu11 -O3

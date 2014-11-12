@@ -70,7 +70,7 @@ CURL * setup_curl(char * key, char * url, string_holder * string_holder_p){
   CURL * return_val;
   return return_val;
 }
-void cleanup (CURL * curl_h, char * url, char * key, char * returned_string){
+void cleanup (CURL * curl_h, char * url, char * key){
   return;
 }
 

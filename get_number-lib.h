@@ -27,7 +27,7 @@ char * get_key_from_file(char * filename);
 char * get_string_from_number_api(char * url, char * key);
 int init_string_holder(string_holder * string_holder_p, size_t num);
 CURL * setup_curl(char * key, char * url, string_holder * string_holder_p);
-void cleanup (CURL * curl_h, char * url, char * key, char * returned_string);
+void cleanup (CURL * curl_h, char * url, char * key);
 
 /*call back used in setting up curl */
 size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
@@ -43,7 +43,7 @@ main
       string_is_not_digits
     get_key_from_file
     get_string_from_number_api
-    init_string_holder
-    setup_curl
-    cleanup
+      init_string_holder
+      setup_curl
+      cleanup
 */

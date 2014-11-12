@@ -6,6 +6,9 @@ int run_get_number(char * number, char * key_filename, FILE * print_fh){
   int return_val;
   return return_val;
 }
+/** param number (a string)
+  takes a number in a string, returns a url containing that number if the string is a number
+ **/
 char * get_url(char * number){
   if (string_is_not_digits(number) ) {
     return NULL;
@@ -34,9 +37,27 @@ int string_is_not_digits(char * number){
 }
 
 char * get_key_from_file(char * filename){
-  char * return_val;
+  FILE * fh;
+  if (!filename || !(*filename) || !(fh = fopen(filename, "r")) ) {
+    return NULL;
+  }
+  char * return_val = NULL; 
+  char buffer[512];
+  int length;
+  if (!(length = strlen(fgets(buffer, 511, fh) ) ) ) {
+    fclose(fh);
+    return NULL;
+  }
+  fclose(fh);
+  if (buffer[length - 1] == '\n') {
+    buffer[length - 1] = '\0';
+    length--;
+  }
+  return_val = calloc(length + 1, sizeof (char) );
+  strcpy(return_val, buffer);
   return return_val;
 }
+
 char * get_string_from_number_api(char * url, char * key){
   char * return_val;
   return return_val;

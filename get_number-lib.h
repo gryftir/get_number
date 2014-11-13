@@ -22,9 +22,8 @@ int run_get_number(char * number, char * key_filename, FILE * print_fh);
 char * get_url(char * number);
 int string_is_not_digits(char * number);
 char * get_key_from_file(char * filename);
-char * get_string_from_number_api(char * url, char * key);
-CURL * setup_curl(char * key, char * url, FILE * fh);
-void cleanup (CURL * curl_h, char * url, char * key);
+int run_curl(char * key, char * url, FILE * fh);
+void cleanup (char * url, char * key);
 
 
 /*call back used in setting up curl */
@@ -41,12 +40,6 @@ main
       string_is_not_digits
     get_key_from_file
     get_string_from_number_api
-      init_string_holder
-        new_string_node
-      setup_curl
-      write_callback
-        new_string_node
+      run_curl
       cleanup
-      string_holder_to_string
-        destroy_string_node
 */

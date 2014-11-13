@@ -3,8 +3,8 @@ current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 CFILES:=$(wildcard *-lib.c)
 P=get_number
 OBJECTS=$(patsubst %.c, %.o, $(CFILES))
-CFLAGS=`pkg-config --cflags glib-2.0` -g -Wall -std=gnu11 -O3
-LDLIBS=`pkg-config --libs glib-2.0`
+CFLAGS=`pkg-config --cflags glib-2.0` `curl-config --cflags` -g -Wall -std=gnu11 -O3
+LDLIBS=`pkg-config --libs glib-2.0` `curl-config --libs`
 CC=cc
 TEST_SRC=$(wildcard test/*test.c)
 TESTS=$(patsubst %.c,%,$(TEST_SRC))

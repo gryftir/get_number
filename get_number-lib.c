@@ -100,14 +100,13 @@ int run_curl(char * key, char * url, FILE * fh){
     int return_val = 0;
     if(url) {
         return_val = 1;
-        /** Options: pass the url, follow redirects, make a get request, don't print
+        /** Options: pass the url, don't print
             header, add the key to a header in the request, write data to the 
             passed in file handle
           **/
         curl_easy_setopt(curl, CURLOPT_URL, url);
-        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
-        curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
         curl_easy_setopt(curl, CURLOPT_HEADER, 0);
+
         slist = curl_slist_append(slist, key);
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, slist);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, fh);

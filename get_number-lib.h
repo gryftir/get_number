@@ -25,10 +25,6 @@ char * get_key_from_file(char * filename);
 int run_curl(char * key, char * url, FILE * fh);
 void cleanup (char * url, char * key);
 
-
-/*call back used in setting up curl */
-size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
-
 #endif
 
 
@@ -39,7 +35,6 @@ main
     get_url
       string_is_not_digits
     get_key_from_file
-    get_string_from_number_api
-      run_curl
-      cleanup
+    run_curl
+    cleanup
 */

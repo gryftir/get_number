@@ -101,6 +101,9 @@ int run_curl(char * key, char * url, FILE * fh){
                     curl_easy_strerror(res));
             return_val = 0;
         }
+        else {
+            fprintf(fh, "\n");
+        }
 
         /* always cleanup */ 
         curl_easy_cleanup(curl);
@@ -120,9 +123,4 @@ void cleanup (char * url, char * key){
     return;
 }
 
-/*call back used in setting up curl */
-size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
-    size_t return_val = 0;
-    return return_val;
-}
 

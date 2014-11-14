@@ -1,6 +1,6 @@
 ## License: http://gryftir.mit-license.org/
 
-A simple client to show how to use libcurl with mashape's API
+A simple client to show how to use libcurl with [mashape and the number fact API](https://www.mashape.com/divad12/numbers-1#!documentation)
 
 requires libcurl and glib (the latter for unit testing).
 

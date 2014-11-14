@@ -4,6 +4,8 @@ A simple client to show how to use libcurl with [mashape and the number fact API
 
 requires libcurl and glib (the latter for unit testing).
 
+I always use valgrind, and thus make test runs valgrind on my program, but feel free to comment out.
+
 to install on ubuntu I believe the following will work
 
     $ sudo apt-get install libglib2.0-0 libcurl3

@@ -1,4 +1,6 @@
-/*GENERIC c file library*/
+/** \file
+    A library for interacting with the mashape.com numbers api
+  */
 #include "get_number-lib.h"
 
 /** param: number to get info on (a string)

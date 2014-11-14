@@ -1,6 +1,11 @@
 /*GENERIC c file library*/
 #include "get_number-lib.h"
 
+/** param: number to get info on (a string)
+    param: key_filename string of filename with mashape API key.
+    param: print_fh a filehandle to print result of API request to
+    returns: 0 on success, or 1,2,3 on an error.
+**/
 
 int run_get_number(char * number, char * key_filename, FILE * print_fh){
     int return_val = 0;
@@ -18,12 +23,13 @@ int run_get_number(char * number, char * key_filename, FILE * print_fh){
         fprintf(stderr, "problem with curl downloading from API\n");
         return_val =  3;
     }
-    cleanup(url, key);
+    cleanup(&url, &key);
     return return_val;
 }
 
 /** param number (a string)
-  takes a number in a string, returns a url containing that number if the string is a number
+  takes a number in a string, returns a dynamically allocated url containing
+  that number, if the string is a number
  **/
 char * get_url(char * number){
     if (string_is_not_digits(number) ) {
@@ -37,6 +43,7 @@ char * get_url(char * number){
     strcat(string, url_end);
     return string;
 }
+
 /** param number (a string)
   returns 1 if string is all digits, 0 if not
  **/
@@ -51,6 +58,9 @@ int string_is_not_digits(char * number){
     }
     return 0;
 }
+/** param: filename of the keyfile
+    returns a dynamically generated string of the api key
+**/
 
 char * get_key_from_file(char * filename){
     FILE * fh;
@@ -74,8 +84,12 @@ char * get_key_from_file(char * filename){
     return return_val;
 }
 
+/** param: a string of the api key
+    param: a url with the number to retrieve info on
+    param: a filehandle to print the retrieved info to
+    returns 1 on success, 0 on failure
+**/
     
-
 int run_curl(char * key, char * url, FILE * fh){
     CURL * curl = NULL;
     CURLcode res;
@@ -84,8 +98,11 @@ int run_curl(char * key, char * url, FILE * fh){
     int return_val = 0;
     if(url) {
         return_val = 1;
+        /** Options: pass the url, follow redirects, make a get request, don't print
+            header, add the key to a header in the request, write data to the 
+            passed in file handle
+          **/
         curl_easy_setopt(curl, CURLOPT_URL, url);
-        /* example.com is redirected, so we tell libcurl to follow redirection */ 
         curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
         curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
         curl_easy_setopt(curl, CURLOPT_HEADER, 0);
@@ -115,11 +132,17 @@ int run_curl(char * key, char * url, FILE * fh){
     return return_val; // 1 success
 }
 
-void cleanup (char * url, char * key){
-    if(url)
-        free(url);
-    if(key)
-        free(key);
+//frees passed strings if not NULL, and sets the pointers to NULL
+
+void cleanup (char ** url, char ** key){
+    if(*url) {
+        free(*url);
+        *url = NULL;
+    }
+    if(*key) {
+        free(*key);
+        *key = NULL;
+    }
     return;
 }
 

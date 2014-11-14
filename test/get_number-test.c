@@ -89,11 +89,34 @@ void test_get_key_from_file (tmpfile_struct * temp, gconstpointer ignored) {
   return;
 }
 
+
+void test_cleanup (get_num_struct * temp, gconstpointer ignored) {
+  char * key = calloc(4, 1);  
+  char * url = calloc(4, 1);
+  g_assert(key);
+  g_assert(url);
+  strcpy(key, "key");
+  strcpy(url, "url");
+  cleanup(&url, &key);
+  g_assert_null(url);
+  g_assert_null(key);
+  cleanup(&url, &key);
+  g_assert_null(url);
+  g_assert_null(key);
+}
+
+void test_run_curl (tmpfile_struct * temp, gconstpointer ignored) {
+}
+void test_run_get_number (tmpfile_struct * temp, gconstpointer ignored) {
+}
+
+
 int main(int argc, char *argv[])
 {
   g_test_init(&argc, &argv, NULL);
   g_test_add("/set1/string_is_not_digits", get_num_struct, NULL, setup_num, test_string_is_not_digits, teardown_num);
   g_test_add("/set1/get_url", get_num_struct, NULL, setup_num, test_get_url, teardown_num);
   g_test_add("/set1/get_key_from_file", tmpfile_struct, NULL, setup_tmpfile, test_get_key_from_file, teardown_tmpfile);
+  g_test_add("/set1/cleanup", get_num_struct, NULL, setup_num, test_cleanup, teardown_num);
   return g_test_run();
 }

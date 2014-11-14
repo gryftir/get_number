@@ -23,7 +23,7 @@ char * get_url(char * number);
 int string_is_not_digits(char * number);
 char * get_key_from_file(char * filename);
 int run_curl(char * key, char * url, FILE * fh);
-void cleanup (char * url, char * key);
+void cleanup (char ** url, char ** key);
 
 #endif
 

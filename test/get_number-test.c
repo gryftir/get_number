@@ -1,4 +1,5 @@
 #include <glib.h>
+#include <glib.h>
 #include "../get_number-lib.h"
 
 typedef struct {
